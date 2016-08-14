@@ -1,4 +1,4 @@
 BeautifulSoup
-PyGTK
+pyperclip
 urllib
 pynotify

@@ -1,0 +1,4 @@
+BeautifulSoup
+PyGTK
+urllib
+pynotify

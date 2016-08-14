@@ -2,7 +2,7 @@ from distutils.core import setup
 setup(
 		name = 'QuickDictionary',
 		packages = ['QuickDictionary'],
-		version = '0.1',
+		version = '0.2',
 		description = 'just copy the word for to know its meaning,must be connected to internet',
 		author = 'Hirendra Thakur',
 		author_email = 'hirendrathakur1993@gmail.com',

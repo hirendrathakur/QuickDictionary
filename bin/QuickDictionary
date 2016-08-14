@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import sys
-import gtk
+import pyperclip
 import time
 import pynotify
 import urllib
@@ -35,10 +35,9 @@ class ShowMeaning():
 		self.start_process()
 
 	def start_process(self):
-		clipboard = gtk.clipboard_get()
-		last_text = clipboard.wait_for_text()
+		last_text = pyperclip.paste()
 		while(True):
-			current_text = clipboard.wait_for_text()
+			current_text = pyperclip.paste()
 			if current_text and (str.isalpha(current_text) and current_text!=last_text):
 				print "Found %s..." %current_text
 				Dictionary(current_text)

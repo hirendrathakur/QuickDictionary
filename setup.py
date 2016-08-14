@@ -7,7 +7,7 @@ setup(
 		author = 'Hirendra Thakur',
 		author_email = 'hirendrathakur1993@gmail.com',
 		url = 'https://github.com/hirendrathakur/quickDictionary',
-		download_url = 'https://github.com/hirendrathakur/quickDictionary/tarball/0.1',
+		download_url = 'https://github.com/hirendrathakur/quickDictionary/tarball/0.2',
 		keywords = ['dictionary','quick','search','copy'],
 		license = 'MIT',
 		scripts = ['bin/QuickDictionary'],

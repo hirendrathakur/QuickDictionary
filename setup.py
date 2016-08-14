@@ -11,6 +11,6 @@ setup(
 		keywords = ['dictionary','quick','search','copy'],
 		license = 'MIT',
 		scripts = ['bin/QuickDictionary'],
-		install_requires = ['pyperclip','BeautifulSoup','pynotify','urllib'],
+		install_requires = ['pyperclip','BeautifulSoup','py-notify','urllib'],
 		classifiers = [],
 		)

@@ -1,9 +1,10 @@
-import urllib
-from bs4 import BeautifulSoup
+#!/usr/bin/env python
 import sys
 import gtk
 import time
 import pynotify
+import urllib
+from bs4 import BeautifulSoup
 
 class Dictionary():
 	def __init__(self, word):
@@ -38,11 +39,10 @@ class ShowMeaning():
 		last_text = clipboard.wait_for_text()
 		while(True):
 			current_text = clipboard.wait_for_text()
-			if str.isalpha(current_text) and current_text!=last_text:
-				print "Copied %s..." %current_text
+			if current_text and (str.isalpha(current_text) and current_text!=last_text):
+				print "Found %s..." %current_text
 				Dictionary(current_text)
 			last_text = current_text
-
-
+			
 if __name__ == '__main__':
 	ShowMeaning()

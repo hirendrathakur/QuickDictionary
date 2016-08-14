@@ -1,7 +1,7 @@
 from distutils.core import setup
 setup(
-		name = 'quickDictionary',
-		packages = ['quickDictionary'],
+		name = 'QuickDictionary',
+		packages = ['QuickDictionary'],
 		version = '0.1',
 		description = 'just copy the word for to know its meaning,must be connected to internet',
 		author = 'Hirendra Thakur',
@@ -9,5 +9,8 @@ setup(
 		url = 'https://github.com/hirendrathakur/quickDictionary',
 		download_url = 'https://github.com/hirendrathakur/quickDictionary/tarball/0.1',
 		keywords = ['dictionary','quick','search','copy'],
-		classifier = [],
+		license = 'MIT',
+		scripts = ['bin/QuickDictionary'],
+		install_requires = ['PyGTk','BeautifulSoup','pynotify'],
+		classifiers = [],
 		)

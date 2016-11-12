@@ -2,7 +2,7 @@
 import sys
 import pyperclip
 import time
-import pynotify
+import subprocess
 import urllib
 from bs4 import BeautifulSoup
 
@@ -20,28 +20,33 @@ class Dictionary():
 		html_obj = urllib.urlopen(self.url)
 		html_string = html_obj.read().decode('utf-8')
 		#parser.feed(html_string)
-		bs_obj = BeautifulSoup(html_string,"lxml")
-		content = bs_obj.find_all('li')
-		#content = bs_obj.find_all('div',attrs = {"class":"std"})
-		if pynotify.init('Basic'):
-			result = content[4].contents[0]
-			n = pynotify.Notification("Instant Dictionary: \n%s" %self.word,"Meaning for: %s\n%s" %(self.word, result))
-			n.set_urgency(pynotify.URGENCY_NORMAL)
-			n.set_timeout(200)
-			n.show()
+		bs_obj = BeautifulSoup(html_string,"html.parser")
+		if bs_obj:
+			content = bs_obj.find_all('li')
+        	result = content[4].contents[0]
+        	result = self.word+" = "+str(result)
+        	subprocess.Popen(['notify-send',"QuickDictionary", result])
 
 class ShowMeaning():
 	def __init__(self):
 		self.start_process()
 
 	def start_process(self):
-		last_text = pyperclip.paste()
+		try:
+			last_text = pyperclip.paste()
+		except:
+			print "install xclip using command 'sudo apt-get install xclip'"
 		while(True):
-			current_text = pyperclip.paste()
+			current_text = str(pyperclip.paste())
 			if current_text and (str.isalpha(current_text) and current_text!=last_text):
-				print "Found %s..." %current_text
-				Dictionary(current_text)
+				try:
+					Dictionary(current_text)
+					print "Found %s..." %current_text
+				except:
+					print "Error getting meaning"
+					pass
 			last_text = current_text
+			
 			
 if __name__ == '__main__':
 	ShowMeaning()

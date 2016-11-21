@@ -23,6 +23,7 @@ class ShowMeaning():
 			return ''
 
 	def start_process(self):
+		print "Your search history will be saved in home/user/Desktop/vocabulary.txt."
 		try:
 			last_text = pyperclip.paste()
 		except:

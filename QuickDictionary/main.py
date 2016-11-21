@@ -3,7 +3,9 @@ import pyperclip
 import time
 import subprocess
 import urllib
-from bs4 import BeautifulSoup	
+from bs4 import BeautifulSoup
+import getpass	
+import csv
 
 class ShowMeaning():
 	def __init__(self):
@@ -28,7 +30,7 @@ class ShowMeaning():
 			last_text = pyperclip.paste()
 		except:
 			print "install xclip using command 'sudo apt-get install xclip'"
-		base_dir = "/home/user/Desktop/vocabulary.txt"
+		base_dir = "/home/"+getpass.getuser()+"/Desktop/vocabulary.xls"
 		while(True):
 			current_text = str(pyperclip.paste())
 			if current_text and (str.isalpha(current_text) and current_text!=last_text):
@@ -37,9 +39,10 @@ class ShowMeaning():
 					result = current_text+" = "+meaning
 					subprocess.Popen(['notify-send',"QuickDictionary", result])
 					print "Found %s..." %current_text
-					file = open(base_dir, "a")
-					msg = "\n"+current_text+" : "+meaning
-					file.write(msg)
+					file = open(base_dir,"a")
+					fieldnames = ['Word','Meaning']
+					writer = csv.DictWriter(file, fieldnames=fieldnames)
+					writer.writerow({'Word': current_text, 'Meaning': meaning})
 					file.close()
 				except Exception as e:
 					print e.message

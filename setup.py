@@ -10,7 +10,7 @@ setup(
 		download_url = 'https://github.com/hirendrathakur/quickDictionary/tarball/0.8',
 		keywords = ['dictionary','quick','search','copy'],
 		license = 'MIT',
-		scripts = ['bin/QuickDictionary'],
+		scripts = ['bin/quickdictionary'],
 		install_requires = ['pyperclip','bs4'],
 		classifiers = [],
 		)
